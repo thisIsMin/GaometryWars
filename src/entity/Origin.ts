@@ -109,10 +109,21 @@ class Origin extends Entity{
     }
 
     protected move(pass:number){
-        super.move(pass);
         //+gameview速度
         this.x=this.x+GameView.speed*pass/1000;
         //egret.log("origin move");
+        let x=this.x;
+        let y=this.y;
+        super.move(pass);
+        let p =new egret.Point();
+        let gx=this.localToGlobal(0,0,p);
+        ///////////////////////////////////////chao ping mu
+        if(p.x-this.og.width/2<0 || p.x+this.og.width/2>this.stage.width ){
+            this.x=x;
+        }
+        if(p.y-this.og.height/2<0 || p.y+this.og.height/2>this.stage.height){
+            this.y=y;
+        }
     }
 
     protected shot(){  

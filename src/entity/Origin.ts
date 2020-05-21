@@ -74,17 +74,68 @@ class Origin extends Entity{
         this.og=new egret.Shape();
         this.og.width=80;
         this.og.height=80;
-        this.og.graphics.beginFill(this.color, 0.8);
-        this.og.graphics.drawCircle(0,0,8);
-        this.og.graphics.endFill();
+        this.drawOg();
+        this.addChild(this.og);
+        // this.og.graphics.beginFill(this.color, 0.8);
+        // this.og.graphics.drawCircle(0,0,8);
+        // this.og.graphics.endFill();
+
+        // //this.graphics.beginFill(0x0000ff, 1);
+        // this.og.graphics.lineStyle(5,this.color);
+        
+        // this.og.graphics.drawCircle(0,0,40);
+        // this.og.graphics.endFill();
+        // this.addChild(this.og);
+        //egret.log("origin draw");
+    }
+    private ogType : number=-1;
+    private drawOg(){
+        //this.og=new egret.Shape();
+        // this.og.width=80;
+        // this.og.height=80;
+        if(this.ogType==Gaometry.TYPE_CIRCLE){
+            this.og.graphics.lineStyle(2, this.color);
+
+            this.og.graphics.drawCircle(0, 0, 8);
+            this.og.graphics.endFill();
+        }else if(this.ogType==Gaometry.TYPE_DIAMOND){
+            this.og.graphics.lineStyle(2, this.color);
+            this.og.graphics.drawRect(-8, -8, 16, 16);
+            this.og.graphics.endFill();
+        }else if(this.ogType==Gaometry.TYPE_SQUARE){
+            this.og.graphics.lineStyle(2,this.color);
+            this.og.graphics.moveTo(8,0);
+            this.og.graphics.lineTo(0,-8);
+            this.og.graphics.lineTo(-8,0);
+            this.og.graphics.lineTo(0,8);
+            this.og.graphics.lineTo(8,0);
+            this.og.graphics.endFill();
+        }else if(this.ogType==Gaometry.TYPE_TRIANGLE){
+            this.og.graphics.lineStyle(3, this.color);
+            this.og.graphics.moveTo(8, 8);
+            this.og.graphics.lineTo(0, -8);
+            this.og.graphics.lineTo(-8, 8);
+            this.og.graphics.lineTo(8, 8);
+            this.og.graphics.endFill();
+        }else{
+            this.og.graphics.beginFill(this.color, 0.8);
+            this.og.graphics.drawCircle(0,0,8);
+            this.og.graphics.endFill();
+        }
+        // this.og.graphics.beginFill(this.color, 0.8);
+        // this.og.graphics.drawCircle(0,0,8);
+        // this.og.graphics.endFill();
 
         //this.graphics.beginFill(0x0000ff, 1);
         this.og.graphics.lineStyle(5,this.color);
         
         this.og.graphics.drawCircle(0,0,40);
         this.og.graphics.endFill();
-        this.addChild(this.og);
-        //egret.log("origin draw");
+        
+    }
+    private reDrawOg(){
+        this.og.graphics.clear();
+        this.drawOg();
     }
     // public go(pass: number){
     //     super.go(pass);
@@ -118,10 +169,10 @@ class Origin extends Entity{
         let p =new egret.Point();
         let gx=this.localToGlobal(0,0,p);
         ///////////////////////////////////////chao ping mu
-        if(p.x-this.og.width/2<0 || p.x+this.og.width/2>this.stage.width ){
+        if(p.x-this.og.width/2<0 || p.x+this.og.width/2>this.stage.stageWidth ){
             this.x=x;
         }
-        if(p.y-this.og.height/2<0 || p.y+this.og.height/2>this.stage.height){
+        if(p.y-this.og.height/2<0 || p.y+this.og.height/2>this.stage.stageHeight){
             this.y=y;
         }
     }
@@ -304,20 +355,28 @@ class Origin extends Entity{
         }
     }
     private activationCirSkill(){
+        this.ogType=Gaometry.TYPE_CIRCLE;
+        this.reDrawOg();
         if(this.skill!=null){
             this.skill.die();
         }
         this.skill=new SkillCir(this,this.gc);
     } 
     private activationDiaSkill(){
+        this.ogType=Gaometry.TYPE_DIAMOND;
+        this.reDrawOg();
         this.skill.die();
         this.skill=new SkillDia(this,this.gc);
     }
     private activationSquSkill(){
+         this.ogType=Gaometry.TYPE_SQUARE;
+        this.reDrawOg();
         this.skill.die();
         this.skill=new SkillSqu(this,this.gc);
     }
     private activationTriSkill(){
+         this.ogType=Gaometry.TYPE_TRIANGLE;
+        this.reDrawOg();
         this.skill.die();
         this.skill=new SkillTri(this,this.gc);
     }

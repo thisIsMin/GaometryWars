@@ -99,6 +99,8 @@ class CirButton extends Button {
         this.y = point.y;
         this.iconType = iconType;
         this.touchEnabled = true;
+        this.icon = new Icon(this.iconType);
+        this.addChild(this.icon);
         //this.addEventListener(egret.Event.ADDED_TO_STAGE, this.onAddToStage, this);
 
     }
@@ -121,8 +123,8 @@ class CirButton extends Button {
         this.graphics.drawCircle(0, 0, 35);
         this.graphics.endFill();
 
-        this.icon = new Icon(this.iconType);
-        this.addChild(this.icon);
+        
+        
         this.drawIcon();
 
     }

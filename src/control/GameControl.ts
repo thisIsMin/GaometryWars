@@ -126,28 +126,22 @@ class GameControl {
         let baseX = 1200 + num * timeSpan * GameView.speed;//x fan wei basex dao basex+timespan*speed
         switch (num) {
             case 0://di yi ci
-                for (let i = 0; i < 3; i++) {
-                    let e = new Circle(IdUitl.getId(), Math.PI, false, baseX + i * 200, 200, Gaometry.STATE_FREE, 0, null, this);
+                for (let i = 0; i < 2; i++) {
+                    let e = new Circle(IdUitl.getId(), Math.PI, false, baseX + i * 300, 200, Gaometry.STATE_FREE, 0, null, this);
                     this.addEntityToGame(e);
 
-                    let e2 = new Circle(IdUitl.getId(), Math.PI, false, baseX + i * 200, 400, Gaometry.STATE_FREE, 0, null, this);
-                    this.addEntityToGame(e2);
-
-                    let e3 = new Circle(IdUitl.getId(), Math.PI, false, baseX + i * 200, 600, Gaometry.STATE_FREE, 0, null, this);
+                    let e3 = new Circle(IdUitl.getId(), Math.PI, false, baseX + i * 300, 600, Gaometry.STATE_FREE, 0, null, this);
                     this.addEntityToGame(e3);
                 }
 
                 break;
             case 1://
                 for (let i = 0; i < 3; i++) {
-                    let e = new Circle(IdUitl.getId(), Math.PI, false, baseX + i * 200, 200, Gaometry.STATE_FREE, 0, null, this);
-                    this.addEntityToGame(e);
+                   
 
                     let e2 = new Circle(IdUitl.getId(), Math.PI, false, baseX + i * 200, 400, Gaometry.STATE_FREE, 0, null, this);
                     this.addEntityToGame(e2);
 
-                    let e3 = new Circle(IdUitl.getId(), Math.PI, false, baseX + i * 200, 600, Gaometry.STATE_FREE, 0, null, this);
-                    this.addEntityToGame(e3);
                 }
 
                 for (let i = 0; i < 3; i++) {
@@ -161,27 +155,23 @@ class GameControl {
                 break;
             case 2://
                 for (let i = 0; i < 6; i++) {
-                    let e = new Circle(IdUitl.getId(), Math.PI, false, baseX + i * 100, 50, Gaometry.STATE_FREE, 0, null, this);
-                    this.addEntityToGame(e);
+  
 
                     let e2 = new Triangle(IdUitl.getId(), Math.PI, false, baseX + i * 100, 325, Gaometry.STATE_FREE, 0, null, this);
                     this.addEntityToGame(e2);
 
-                    let e3 = new Circle(IdUitl.getId(), Math.PI, false, baseX + i * 100, 600, Gaometry.STATE_FREE, 0, null, this);
-                    this.addEntityToGame(e3);
+                
                 }
 
                 break;
             case 3://
                 for (let i = 0; i < 3; i++) {
-                    let e = new Square(IdUitl.getId(), Math.PI, false, baseX + i * 200, 50, Gaometry.STATE_FREE, 0, null, this);
-                    this.addEntityToGame(e);
+             
 
                     let e2 = new Square(IdUitl.getId(), Math.PI, false, baseX + i * 200, 325, Gaometry.STATE_FREE, 0, null, this);
                     this.addEntityToGame(e2);
 
-                    let e3 = new Square(IdUitl.getId(), Math.PI, false, baseX + i * 200, 600, Gaometry.STATE_FREE, 0, null, this);
-                    this.addEntityToGame(e3);
+    
                 }
                 break;
             case 4://
@@ -200,15 +190,15 @@ class GameControl {
                 paths1.push(tpd);
                 let d2 = new Diamond(IdUitl.getId(), Math.PI * 3 / 2, false, baseX, 0, Gaometry.STATE_FREE, 50, paths1, this);
                 this.addEntityToGame(d2);
-                for (let i = 0; i < 3; i++) {
-                    let e = new Square(IdUitl.getId(), Math.PI, false, 300 + baseX + i * 100, 50, Gaometry.STATE_FREE, 0, null, this);
-                    this.addEntityToGame(e);
+                // for (let i = 0; i < 3; i++) {
+                //     let e = new Square(IdUitl.getId(), Math.PI, false, 300 + baseX + i * 100, 50, Gaometry.STATE_FREE, 0, null, this);
+                //     this.addEntityToGame(e);
 
 
-                    let e3 = new Square(IdUitl.getId(), Math.PI, false, 300 + baseX + i * 100, 600, Gaometry.STATE_FREE, 0, null, this);
-                    this.addEntityToGame(e3);
-                }
-                break;
+                //     let e3 = new Square(IdUitl.getId(), Math.PI, false, 300 + baseX + i * 100, 600, Gaometry.STATE_FREE, 0, null, this);
+                //     this.addEntityToGame(e3);
+                // }
+                // break;
 
             case 5://
                 for (let i = 0; i < 6; i++) {
